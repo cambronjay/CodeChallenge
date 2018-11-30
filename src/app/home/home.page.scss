@@ -1,1 +1,22 @@
 
+.code-block {
+    background-color: #f5f6f9;
+    border-radius: 4px;
+    display: block;
+    font-family: var(--font-family-code);
+    font-size: 12px;
+    margin: 1.5em 0;
+    position: relative;
+    -webkit-font-smoothing: initial;
+}
+
+pre code {
+    color: #334561;
+    font-weight: 500;
+    border-radius: 0;
+    background: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre;
+}
