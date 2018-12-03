@@ -11,6 +11,7 @@ To use this app simply follow these steps:
 To see the answer to Question 8 follow these steps:
 
 1. Install latest Node.js LTS
+3. cd ./node-server
 2. run npm install
 3. npm start
 **View the results in the conole or in the terminal
