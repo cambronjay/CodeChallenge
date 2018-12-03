@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,54 +6,171 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  private stringForm: FormGroup;
-  private stringCheckResult: string;
   private question1 = `
-  export model = new Model({
-    a:1,
-    b:function(){}
-  })
+  private checkNullOrEmpty(value: string): string {
+    if (!!value) {
+      return 'You are a valid string!'
+    } else {
+      return 'You are not a valid string!'
+    }
+  }
   `;
-  private answer1: Array<string> = [];
-  private test1 = [null, undefined, '', 'Am I a string?'];
-  constructor(private formBuilder: FormBuilder) {
-
+  private question2 = `
+  private runDivisorsGenerate(){
+    let testDisplay = [];
+    let c = 0;
+    let i;
+    for(i = 1; i <= this.test2; i++){
+      c = this.test2/i;
+      if(c === Math.floor(c)){
+        testDisplay.push(i); 
+      }
+    }
+    this.answer2 = testDisplay;
+}
+  `;
+  private question3 = `
+  private calculateTriangle(): void {
+    if(this.isTriangle(this.test3)){
+      let side1 = this.test3[0];
+      let side2 = this.test3[1];
+      let side3 = this.test3[2];
+      let perimeter = this.test3.reduce(this.getArraySum)/2;
+      let area =  Math.sqrt(perimeter*((perimeter-side1)*(perimeter-side2)*(perimeter-side3)));
+      this.answer3 = String(area);
+    } else {
+      this.answer3 = 'Invalid Triangle.';
+    }
   }
 
-  private runStringCheckSamples():void {
+  private getArraySum(total, num){
+      return total + num;
+  }
+
+  private isTriangle(sides): boolean {
+    let isTrianlge = true;
+    sides.forEach((side, index, array) => {
+      if (side <= 0){
+        isTrianlge = false;
+      };
+      let nextSide = array.slice();
+      nextSide.splice(index, 1);
+      if (side >= nextSide.reduce((a, b) => {return a + b})) {
+        isTrianlge = false;
+      }
+    });
+    return isTrianlge;
+  }
+  `;
+  private question4 = `
+  private findMostCommonNumbers(){
+    let keepCount = {};
+    this.test4.forEach(function (a) {
+      keepCount[a] = (keepCount[a] || 0) + 1;
+    });
+    let countObjects = Object.keys(keepCount).reduce(function (r, k, i) {
+        if (!i || keepCount[k] > keepCount[r[0]]) {
+            return [k];
+        }
+        if (keepCount[k] === keepCount[r[0]]) {
+            r.push(k);
+        }
+        return r;
+    }, []);
+    this.answer4 = String(countObjects);
+  }`;
+  private answer1: Array<string> = [];
+  private test1: Array<any> = [null, undefined, '', 'Am I a string?'];
+  private answer2: Array<any> = [];
+  private test2: any = 60;
+  private answer3: string;
+  private test3: Array<any> = [3, 4, 5];
+  private answer4: string;
+  private test4: Array<any> = [5, 4, 3, 2, 4, 5, 1, 6, 1, 2, 5, 4];
+  constructor() { }
+
+  private runStringCheck(): void {
     let i;
-    for (i = 0; i < this.test1.length; i++) { 
-        let test = this.checkNullOrEmpty(this.test1[i]);
-        let testName = this.test1[i];
-        let testResult = String(testName) + ':' + test;
-        this.answer1.push(testResult);
+    let testDisplay = [];
+    for (i = 0; i < this.test1.length; i++) {
+      let test = this.checkNullOrEmpty(this.test1[i]);
+      let testName = this.test1[i];
+      let testNameEval = String(testName) == '' ? 'Empty String' : String(testName);
+      let testResult = testNameEval + ': ' + test;
+      testDisplay.push(testResult);
     }
-    console.log(this.answer1)
+    this.answer1 = testDisplay;
   }
 
   private checkNullOrEmpty(value: string): string {
     if (!!value) {
-      return 'You are a string!'
+      return 'You are a valid string!'
     } else {
-      return 'You are not a string!'
+      return 'You are not a valid string!'
     }
   }
 
-  ngOnInit() {
-    // this.stringForm = this.formBuilder.group({
-    //   'stringInput': ['', [Validators.required, Validators.pattern('[A-Za-z0-9]'), Validators.minLength(1)]],
-    // });
+  private runDivisorsGenerate(): void {
+    let testDisplay = [];
+    let c = 0;
+    let i;
+    for (i = 1; i <= this.test2; i++) {
+      c = this.test2 / i;
+      if (c === Math.floor(c)) {
+        testDisplay.push(i);
+      }
+    }
+    this.answer2 = testDisplay;
   }
 
-  ngAfterViewInit() {
-    // this.stringForm
-    //   .valueChanges
-    //   .pipe(
-    //     distinctUntilChanged(),
-    //     debounceTime(500)
-    //   )
-    //   .subscribe(formValues => {
-    //    this.stringCheckResult = this.checkNullOrEmpty(formValues.stringInput);
-    //   });
+  private calculateTriangle(): void {
+    if (this.isTriangle(this.test3)) {
+      let side1 = this.test3[0];
+      let side2 = this.test3[1];
+      let side3 = this.test3[2];
+      let perimeter = this.test3.reduce(this.getArraySum) / 2;
+      let area = Math.sqrt(perimeter * ((perimeter - side1) * (perimeter - side2) * (perimeter - side3)));
+      this.answer3 = String(area);
+    } else {
+      this.answer3 = 'Invalid Triangle.';
+    }
   }
+
+  private getArraySum(total, num) {
+    return total + num;
+  }
+
+  private isTriangle(sides): boolean {
+    let isTrianlge = true;
+    sides.forEach((side, index, array) => {
+      if (side <= 0) {
+        isTrianlge = false;
+      };
+      let nextSide = array.slice();
+      nextSide.splice(index, 1);
+      if (side >= nextSide.reduce((a, b) => { return a + b })) {
+        isTrianlge = false;
+      }
+    });
+    return isTrianlge;
+  }
+
+  private findMostCommonNumbers(): void {
+    let keepCount = {};
+    this.test4.forEach(function (a) {
+      keepCount[a] = (keepCount[a] || 0) + 1;
+    });
+    let countObjects = Object.keys(keepCount).reduce(function (r, k, i) {
+      if (!i || keepCount[k] > keepCount[r[0]]) {
+        return [k];
+      }
+      if (keepCount[k] === keepCount[r[0]]) {
+        r.push(k);
+      }
+      return r;
+    }, []);
+    this.answer4 = String(countObjects);
+  }
+
+
 }
