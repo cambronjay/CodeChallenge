@@ -1,5 +1,7 @@
 # Code Challenge
 
+To view this app go [here](https://codechallenge-29ae4.firebaseapp.com/home)
+
 To use this app simply follow these steps:
 
 1. Install latest Node.js LTS
