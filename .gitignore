@@ -17,6 +17,10 @@ npm-debug.log*
 .sourcemaps/
 .sass-cache/
 .tmp/
+.firebaserc
+firebase.json
+.firebase/
+public/
 .versions/
 coverage/
 www/
