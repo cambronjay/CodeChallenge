@@ -17,4 +17,5 @@ To see the answer to Question 8 follow these steps:
 2. cd ./node-server
 3. run npm install
 4. npm start
+
 **View the results in the conole or in the terminal

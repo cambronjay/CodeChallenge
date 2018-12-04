@@ -10,76 +10,79 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="auto">
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Question 1</ion-card-title>
-      <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <h3>Main Method</h3>
-      <div class="code-block">
-        <pre>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Question 1</ion-card-title>
+            <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Code</h3>
+            <div class="code-block">
+              <pre>
               <code [innerHTML]="question1"></code>
         </pre>
-      </div>
-      <h3>Test Result</h3>
-      <ion-list *ngFor="let a of answer1">
-        <ion-item>{{a}}</ion-item>
-      </ion-list>  
-    </ion-card-content>
-      <ion-item>
-        <ion-button expand="full" (click)="runStringCheck()">Run code</ion-button>
-      </ion-item>
-  </ion-card>
+            </div>
+            <h3>Test Result</h3>
+            <ion-list *ngFor="let a of answer1">
+              <ion-item>{{a}}</ion-item>
+            </ion-list>
+          </ion-card-content>
+          <ion-item>
+            <ion-button expand="full" (click)="runStringCheck()">Run code</ion-button>
+          </ion-item>
+        </ion-card>
 
-  <ion-card>
-      <ion-card-header>
-        <ion-card-title>Question 2</ion-card-title>
-        <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <h3>Main Method</h3>
-        <div class="code-block">
-          <pre>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Question 2</ion-card-title>
+            <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Code</h3>
+            <div class="code-block">
+              <pre>
                 <code [innerHTML]="question2"></code>
           </pre>
-        </div>
-        <h3>Test Result</h3>
-        {{answer2}}
-      </ion-card-content>
-        <ion-item>
-          <ion-button expand="full" (click)="runDivisorsGenerate()">Run code</ion-button>
-        </ion-item>
-    </ion-card>
+            </div>
+            <h3>Test Result</h3>
+            {{answer2}}
+          </ion-card-content>
+          <ion-item>
+            <ion-button expand="full" (click)="runDivisorsGenerate()">Run code</ion-button>
+          </ion-item>
+        </ion-card>
 
-    <ion-card>
-        <ion-card-header>
-          <ion-card-title>Question 3</ion-card-title>
-          <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          <h3>Main Method</h3>
-          <div class="code-block">
-            <pre>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Question 3</ion-card-title>
+            <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Code</h3>
+            <div class="code-block">
+              <pre>
                   <code [innerHTML]="question3"></code>
             </pre>
-          </div>
-          <h3>Test Result</h3>
-          {{answer3}}
-        </ion-card-content>
+            </div>
+            <h3>Test Result</h3>
+            {{answer3}}
+          </ion-card-content>
           <ion-item>
             <ion-button expand="full" (click)="calculateTriangle()">Run code</ion-button>
           </ion-item>
-      </ion-card>
+        </ion-card>
 
-      <ion-card>
+        <ion-card>
           <ion-card-header>
             <ion-card-title>Question 4</ion-card-title>
             <ion-card-subtitle>Language: JavaScript/TypeScript</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-            <h3>Main Method</h3>
+            <h3>Code</h3>
             <div class="code-block">
               <pre>
                     <code [innerHTML]="question4"></code>
@@ -88,18 +91,22 @@
             <h3>Test Result</h3>
             {{answer4}}
           </ion-card-content>
-            <ion-item>
-              <ion-button expand="full" (click)="findMostCommonNumbers()">Run code</ion-button>
-            </ion-item>
-        </ion-card>     
+          <ion-item>
+            <ion-button expand="full" (click)="findMostCommonNumbers()">Run code</ion-button>
+          </ion-item>
+        </ion-card>
 
         <ion-card>
-            <ion-card-header>
-              <ion-card-title>Question 8</ion-card-title>
-              <ion-card-subtitle>Language: JavaScript</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-              <h3>Run the node server found in the "node-server" folder and view the terminal/console log for the answer.</h3>
-            </ion-card-content>
-          </ion-card> 
+          <ion-card-header>
+            <ion-card-title>Question 8</ion-card-title>
+            <ion-card-subtitle>Language: JavaScript</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h3>Run the node server found in the "node-server" folder and view the terminal/console log for the answer.</h3>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
